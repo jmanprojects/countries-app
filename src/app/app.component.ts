@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'countriesApp';
+  public themeSelected: string = 'light';
+  title = 'asdasd';
+  prueba: string = 'data-bs-theme = ' + "dark";
+  changeTheme(theme: string):void{
+    console.log(theme);
+  }
 }

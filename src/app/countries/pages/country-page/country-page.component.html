@@ -1,0 +1,50 @@
+<ng-template #loading>
+    <div class="alert alert-info text-center">
+        Espere por favor
+    </div>
+</ng-template>
+
+<div class="container mt-2 align-content-center align-items-center" *ngIf="countries; else loading">
+    <div class="row p-3">
+        <div class="col-12 col-md-5">
+            <button routerLink="/countries" class="btn btn-light btn-lg"><i class="bi bi-arrow-left"></i> Back</button>
+        </div>
+    </div>
+    <div class="row mt-3 p-3">
+        <div class="col-12 col-md-4 ml-2 ">
+            <img style="width: 100%; height: auto;" [src]="countries.flags.svg" alt="">
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+           <div class="row">
+            <h2>{{countries.name.common}}</h2>
+            <div class="col-12 mt-3 col-md-6">
+                
+                <p><b>Native Name: </b> {{countries.name.nativeName.eng?.common || countries.name.nativeName.ara?.common || countries.name.nativeName.spa?.common || countries.name.nativeName.ita?.common}}</p>
+                
+                <p><b>Population: </b> {{countries.population | number}}</p>
+                
+                <p><b>Region: </b> {{countries.region}}</p>
+                
+                <p><b>Sub Region: </b> {{countries.subregion}}</p>
+                
+                <p><b>Capital: </b> {{countries.capital}}</p> 
+            </div>
+            <div class="col-12 mt-3 col-md-6">
+                <p><b>Top Level Domain: </b> {{countries.tld}}</p>
+           
+                <p><b>Curriencies: </b> {{countries.currencies.USD?.name || countries.currencies.YER?.name || countries.currencies.CLP?.name || countries.currencies.DOP?.name || countries.currencies.EUR?.name || countries.currencies.CRC?.name}}</p>
+            
+                <p><b>Languages: </b> {{countries.languages.spa || countries.languages.ara || countries.languages.ita || countries.languages.eng}}</p>
+            </div>
+           </div>
+
+           <br>
+           <div class="row">
+            <h6>Borders Countries: </h6>
+            <div class="col-2 col-md-2 m-1" *ngFor="let i of countries.borders">
+                <button [routerLink]="['/countries/by', i]" class="btn btn-light" > {{i}}</button>
+            </div>
+           </div>
+        </div>
+    </div>
+</div>

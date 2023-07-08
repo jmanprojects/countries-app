@@ -1,0 +1,23 @@
+<div class="container-fluid card p-2">
+    <div class="d-flex justify-content-between" >
+        <div class="content-header-item" >
+            <h5>Where in the world</h5>
+        </div>
+        <div class="content-header-item">
+            <div class="dropdown">
+                <p class="dropdown-toggle" style="cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"> 
+                    <i class="bi bi-moon-stars" ></i> Dark Mode
+                </p>
+                <ul class="dropdown-menu">
+                  <li 
+                    *ngFor="let i of pageMode"
+                    (click)="changeTheme(i.name)" 
+                    class="dropdown-item" 
+                    style="cursor: pointer;">
+                    <i [class]="i.icon"></i> {{i.name}}
+                </li>
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class=" container  mt-4">
+    <div class="row">
+        <div class="col-12">
+            <shared-search-input 
+            (inputValue)="searchCountry($event)"
+            (selectRegion)="searchByRegion($event)"
+            ></shared-search-input>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-md-12">
+            <ng-template #load>
+                <div class="alert alert-info text-center">
+                    there are no results to show
+                </div>
+            </ng-template>                       
+        </div>
+    </div>
+    <div class="row mt-4" *ngIf="countries.length > 0; else load">
+        <div *ngFor="let country of countries" class="col-sm-12 col-md-3 mt-2">
+            <div  class="card" style="width: 100%; height: auto; cursor: pointer;" [routerLink]="['/countries/by', country.cca3]">
+                <img   [src]="country.flags.svg" class="card-img-top" [alt]="country.name.common" [title]="country.name.common">
+                <div class="card-body">
+                    <h5 style="cursor: pointer;">{{country.name.common}}</h5>
+                    <p> <b>Population:</b> {{country.population | number}}</p>
+                    <p> <b>Region:</b> {{country.region}}</p>
+                    <p> <b>Capital:</b> {{country.capital}}</p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
